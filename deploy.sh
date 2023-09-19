@@ -1,0 +1,1 @@
+gcloud compute ssh [INSTANCE-NAME] --zone=[ZONE] --command="sudo docker pull gcr.io/[PROJECT-ID]/[IMAGE-NAME]:$COMMIT_SHA && sudo docker run -d -p 80:80 gcr.io/[PROJECT-ID]/[IMAGE-NAME]:$COMMIT_SHA"
