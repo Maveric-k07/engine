@@ -3,13 +3,13 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia-south1-docker.pkg.dev/amikus/helloworld:$COMMIT_SHA'
+      - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:$COMMIT_SHA'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-south1-docker.pkg.dev/amikus/helloworld:$COMMIT_SHA'
+      - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:$COMMIT_SHA'
 
 images:
   - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:$COMMIT_SHA'
