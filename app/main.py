@@ -1,13 +1,15 @@
 from typing import Union
-
 from fastapi import FastAPI
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 
 app = FastAPI()
 
+app.add_middleware(HTTPSRedirectMiddleware)
+
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
+async def main():
+    return {"message": "Hello World"}
 
 
 @app.get("/items/{item_id}")
