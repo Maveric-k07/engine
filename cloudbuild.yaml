@@ -3,13 +3,18 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:$COMMIT_SHA'
+      - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:latest'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:$COMMIT_SHA'
+      - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:latest'
+  
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['compute', 'instances', 'update-container', 'instance-1', '--zone', 'asia-south1-c', '--container-image', 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:latest']
+
 
 images:
-  - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:$COMMIT_SHA'
+  - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:latest'
+
