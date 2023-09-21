@@ -9,7 +9,7 @@ app.add_middleware(HTTPSRedirectMiddleware)
 
 @app.get("/")
 async def main():
-    return {"message": "Hello World"}
+    return {"message": "Hello World v2"}
 
 
 @app.get("/items/{item_id}")
