@@ -14,7 +14,9 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['compute', 'instances', 'update-container', 'instance-1', '--zone', 'asia-south1-c', '--container-image', 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:latest']
 
-
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
 images:
   - 'asia-south1-docker.pkg.dev/amikus/helloworld/helloapp:latest'
 
